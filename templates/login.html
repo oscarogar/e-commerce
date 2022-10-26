@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<body class="text-center">
+<div class="container">
+    <form METHOD="POST" action="{{url_for('login')}}" class="form form-horizontal" style="color:white" role="form">
+        <div class="col-sm-6 col-md-8 col-lg-12">
+            <h2 class="font-weight-normal"> Please Login </h2>
+            {{form.email.label()}}
+            {{form.email (class='form-control', placeholder='Enter Email')}}
+            <br>
+            {{form.password.label()}}
+            {{form.password (class='form-control', placeholder='Enter Password')}}
+            <br>
+            {{form.submit (class='btn btn-lg btn-block btn-primary')}}
+
+        </div>
+    </form>
+</div>
+
+</body>
+{% endblock %}

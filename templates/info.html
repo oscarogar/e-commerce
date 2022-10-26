@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Product Decscription
+{% endblock %}
+
+{% block content %}
+
+
+{% for row in details %}
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-lg-7 pt-4 pt-lg-0">
+                <h3>{{row.item_name}}</h3>
+                <br/>
+                <img src="{{row.item_photo}}" width="375px" height="376px" class="float-end imgshadow"
+                     alt="Image of {{row.item_name}}">
+
+            </div>
+
+            <div style="text-align: left; margin-top:4rem" class="col-lg-5">
+                <p>{{row.description}}</p>
+                <form action="{{url_for('add_cart', item_id=row.id)}}" method="post">
+                    <button class="btn btn-success float-start" type="submit">Add to Cart</button>
+                </form>
+                 <form action="#" >
+                    <button class="btn btn-success float-none" type="submit">Checkout</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endfor %}
+
+{% endblock %}

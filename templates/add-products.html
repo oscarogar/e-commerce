@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Products
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+<div class="container">
+    <form method="POST" action="{{url_for('add_products')}}" enctype="multipart/form-data" class="form form-horizontal"
+          style="color:white" role="form">
+        {{form.hidden_tag()}}
+        <div class="col-sm-6 col-md-8 col-lg-12">
+            <h2 class="font-weight-normal"> Please Add Products </h2>
+            {{form.item_name.label()}}
+            {{form.item_name (class='form-control', placeholder='Enter The Name Of The Item')}}
+            <br>
+            {{form.description.label()}}
+            {{form.description (class='form-control', placeholder='Describe Item\'s Main Features Here')}}
+            <br>
+            {{form.price.label()}}
+            {{form.price (class='form-control', placeholder='Enter Selling Price')}}
+            <br>
+            {{form.item_photo.label()}}
+            {{form.item_photo (class='form-control', placeholder='Enter Image URL')}}
+            <br>
+            {{form.submit (class='btn btn-lg btn-block btn-primary')}}
+        </div>
+    </form>
+</div>
+  <script src="form-validation.js"></script>
+</body>
+
+{% endblock %}

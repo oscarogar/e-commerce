@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Auto Shop
+{% endblock %}
+
+{% block content %}
+<main>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="bd-placeholder-img" src="static/images/slider_image/repairs.jpg" width="100%" height="400"
+                     aria-hidden="true">
+
+                <div class="container">
+                    <div class="carousel-caption text-center">
+                        <h1>We Repair all Vehicles</h1>
+                        <p>Photo Credit: Istock</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="bd-placeholder-img" width="100%" height="400"
+                     src="static/images/slider_image/suspension.jpg" aria-hidden="true">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>We Sell Spare Parts Too</h1>
+                        <p>Photo Credit: Istock</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="bd-placeholder-img" src="static/images/slider_image/wheel-and-tyre.jpg" width="100%"
+                     height="400" aria-hidden="true">
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>We Do Alignment and Balancing </h1>
+                        <p>Photo Credit: Istock</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</main>
+<hr>
+<div class="container marketing text-center">
+
+    <!-- Three columns of text below the carousel -->
+    <section class="section-products">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="header">
+                        <h2>Available Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Load products from the DB -->
+                {% for item in items %}
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <img class="product-image" src="{{item.item_photo}}" alt="Product Photo"
+                                 width="100%" height="100%">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="{{url_for('add_cart', item_id=item.id)}}"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="{{url_for('product_info', product_id=item.id)}}"><i class="prod-description fas fa-info"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">{{item.item_name}}</h3>
+                            <!--                            <h4 class="product-old-price">{{item.price}}</h4>-->
+                            <h4 class="product-price">₦{{item.price}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+<!--<script type="text/javascript" src="{{url_for('static', filename='script.js')}}">-->
+
+<!--</script>-->
+<!--<div>-->
+<!--    <div class="modal fade" id="empModal" role="dialog">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h4 class="modal-title">Product Description</h4>-->
+<!--                    <button type="button" class="close" data-dismiss="modal">×</button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+{% endblock %}
